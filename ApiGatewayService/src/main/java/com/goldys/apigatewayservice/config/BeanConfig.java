@@ -9,21 +9,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /*
- * Annotate the class with @Configuration
+ * Boilerplate Code: Do Not Change
  */
 @Configuration
 public class BeanConfig {
-
-    /*
-     *  Create a bean for FilterRegistrationBean.
-     *  1. Register the JwtFilter
-     *  2. add URL pattern for following so that any request for
-     *     that URL pattern will be intercepted by the filter:
-     *      - '/gymservice/api/v1/gymservice/*'
-     *      - '/gymservice/api/v2/gymservice/*'
-     *      - '/enquiryservice/api/v1/enquiryservice/admin/*'
-     *      - '/ticketservice/api/v1/ticketservice/*'
-     */
 
     @Bean
     public FilterRegistrationBean jwtFilter() {
@@ -39,9 +28,6 @@ public class BeanConfig {
 
     }
 
-    /*
-     *  Bean to be created for CorsFilter so that requests from any origin
-     */
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

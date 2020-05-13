@@ -5,10 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /*
-Annotate this class with the following annotations:
-1. @SpringBootApplication
-2. @EnableConfigServer - to mark this application as Spring Cloud Config Server
-*/
+ * Boilerplate Code: Do Not Change
+ */
 @EnableConfigServer
 @SpringBootApplication
 public class ConfigServiceApplication {

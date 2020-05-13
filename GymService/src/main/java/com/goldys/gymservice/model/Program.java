@@ -2,16 +2,11 @@ package com.goldys.gymservice.model;
 
 import org.springframework.data.annotation.Id;
 
+/*
+ * Boilerplate Code: Do Not Change
+ */
 public class Program {
 
-    /*
-     * This class should have eight fields
-     * (String programCode, String programName, String description, int durationInMonths, float price, float discountRate, float currentPrice, boolean isActive)
-     * This class should also contain the getters and setters for the
-     * fields along with the no-arg , parameterized	constructor and toString method.
-     * The value of currentPrice should not be accepted from the user but should be
-     * always calculated based on price and discountRate.
-     */
     @Id
     private String programCode;
     private String programName;

@@ -1,18 +1,19 @@
-# Goldy's Gym - Part 2
+# Goldy's Gym - Deploying Microservice Based Application using Docker Containers
 
 # See PROBLEM.md for requirements.
 
 ## Objective
 
 The Objective of this assignment are the following:
-- Perform routing with API Gateway
-- Use configuration server to centralize distributed configurations
-- Use service registry for service discovery
-- Create cluster of service instances and manage load between them
-- Add fault tolerance using circuit breakers
-- Perform asynchronous event-driven messaging across distributed services
-- Securing Microservices
-- Perform Logging and Log aggregation in Microservices
+ - Understanding Containerization
+ - Introduction to Containers
+ - Container architecture
+ - Overview of Docker
+ - Docker architecture
+ - Understanding and creating Dockerfile
+ - Working with docker containers
+ - Container Communication
+ - Deploying Multi-Container Application using Docker Compose
 
 #### To use this as a boilerplate for your new project, you can follow these steps
 
@@ -54,22 +55,6 @@ The Objective of this assignment are the following:
 
 #### To run the application, you can follow these steps:
 
-This application required RabbitMQ and Zipkin Server. For simplicity, we will run
-them using Docker Containers. Hence, docker should be installed on the development 
-environment. Hence, it is strongly suggested that the following commands should be
-executed in order to get this started.
-
-To Run RabbitMQ from Docker:
-```
-docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
-```
-
-To Run OpenZipkin from Docker:
-```
-docker run -d -p 9411:9411 openzipkin/zipkin
-```
-
-
 The application consists of the following microservices:
 - ConfigService (contains the externalized configuration for all microservices)
 - EurekaService (works as the Service Registry using Netflix Eureka)
@@ -81,71 +66,10 @@ The application consists of the following microservices:
 
 the steps are as follows:
 
-1. MySQL Database URL, Username, Password and MongoDB URI are set through 
-   environment variables. You need to set the following environment variables:
-   - MYSQL_URL
-   - MYSQL_USERNAME
-   - MYSQL_PASSWORD
-   - MONGO_URI
-   
-   In Linux environment, you can set the environment variables using the following commands:
-   
-   ```
-   export MYSQL_URL=jdbc:mysql://localhost:3306/userdb
-   export MYSQL_USERNAME=root
-   export MYSQL_PASSWORD=password
-   export MONGO_URI=mongodb://localhost:27017/goldysgym
-   ```
-`Note:`
- the values are indicative only, which should be replaced by correct value as per
- the environment being used.
-
-To run the application, you will need to start the individual microservices. 
-
-To Start `ConfigService`:
-
-- ```cd ConfigService```
-
-- ```mvn spring-boot:run```
-
-To Start `EurekaService`:
-
-- ```cd EurekaService```
-
-- ```mvn spring-boot:run```
-
-To Start `ApiGatewayService`:
-
-- ```cd ApiGatewayService```
-
-- ```mvn spring-boot:run```
-
-To Start `UserService`:
-
-- ```cd UserService```
-
-- ```mvn spring-boot:run```
-
-
-To Start `GymService`:
-
-- ```cd GymService```
-
-- ```mvn spring-boot:run```
-
-To Start `EnquiryService`:
-
-- ```cd EnquiryService```
-
-- ```mvn spring-boot:run```
-
-To Start `TicketService`:
-
-- ```cd TicketService```
-
-- ```mvn spring-boot:run```
-
-
+1. creating the Dockerfiles for each microservices
+2. Pushing the docker images to Docker Hub
+3. Creating a `docker-compose.yml` file
+4. Run the application using `docker-compose.yml`
 
 
 ### Important instructions for Participants
@@ -156,7 +80,6 @@ To Start `TicketService`:
 
 ### MENTORS TO BEGIN REVIEW YOUR WORK ONLY AFTER ->
 > - You add the respective Mentor as a Reporter/Master into your Assignment Repository
-> - You have checked your Assignment on the Automated Evaluation Tool - Hobbes (Check for necessary steps in your Boilerplate - README.md file. ) and got the required score - Check with your mentor about the Score you must achieve before it is accepted for Manual Submission.
 > - Intimate your Mentor on Slack and/or Send an Email to learner.support@stackroute.in - with your Git URL - Once you done working and is ready for final submission.
 
 

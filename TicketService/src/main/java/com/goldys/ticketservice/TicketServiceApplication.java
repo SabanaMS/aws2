@@ -11,11 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 
 /*
-Annotate this class with the following annotations:
-1. @SpringBootApplication
-2. @EnableEurekaClient - to mark this application as a client of a Eureka Service Registry
-3. @EnableHystrix - to enable Hystrix fault tolerance in the application
-*/
+ * Boilerplate Code: Do Not Change
+ */
 @EnableHystrix
 @EnableEurekaClient
 @SpringBootApplication

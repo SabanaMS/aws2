@@ -4,42 +4,29 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     ports:
-#      - 5672:5672
       - 15672:15672
     container_name: rabbitmq_container
-#    network_mode: host
-
 
   zipkin:
     image: openzipkin/zipkin
     ports:
       - 9411:9411
     container_name: zipkin_container
-#    network_mode: host
 
 
   mysql:
     image: mysql:latest
-#    ports:
-#      - 3306:3306
     container_name: mysql_container
-#    network_mode: host
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: userdb
 
   mongo:
     image: mongo:latest
-#    ports:
-#      - 27017:27017
     container_name: mongo_container
-#    network_mode: host
 
   configservice:
     image: somsubhramkh/config-service:1.0-local
-#    ports:
-#      - 8888:8888
-#    network_mode: host
     restart: always
     container_name: configservice_container
     depends_on:
@@ -49,7 +36,6 @@ services:
     image: somsubhramkh/eureka-service:1.0-local
     ports:
       - 8761:8761
-#    network_mode: host
     restart: always
     container_name: eurekaservice_container
     depends_on:
@@ -60,7 +46,6 @@ services:
     image: somsubhramkh/api-gateway:1.0-local
     ports:
       - 9000:9000
-#    network_mode: host
     restart: always
     container_name: apigateway_container
     depends_on:
@@ -72,7 +57,6 @@ services:
     image: somsubhramkh/user-service:1.0-local
     ports:
       - 8090:8090
-#    network_mode: host
     restart: always
     container_name: userservice_container
     depends_on:
@@ -86,7 +70,6 @@ services:
     image: somsubhramkh/gym-service:1.0-local
     ports:
       - 8091:8091
-#    network_mode: host
     restart: always
     container_name: gymservice_container
     depends_on:
@@ -100,7 +83,6 @@ services:
     image: somsubhramkh/enquiry-service:1.0-local
     ports:
       - 8092:8092
-#    network_mode: host
     restart: always
     container_name: enquiryservice_container
     depends_on:
@@ -116,7 +98,6 @@ services:
     image: somsubhramkh/ticket-service:1.0-local
     ports:
       - 8093:8093
-#    network_mode: host
     restart: always
     container_name: ticketservice_container
     depends_on:

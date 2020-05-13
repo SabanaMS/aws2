@@ -12,18 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /*
- * This class is implementing the UserService interface. This class has to be annotated with
- * @Service annotation.
- * @Service - is an annotation that annotates classes at the service layer, thus
- * clarifying it's role.
- *
- * */
+ * Boilerplate Code: Do Not Change
+ */
 @Service
 public class UserServiceImpl implements UserService {
-
-    /*
-     * Constructor Autowiring should be implemented for the UserRepository.
-     */
 
     private UserRepository userRepository;
 
@@ -32,10 +24,6 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    /*
-     * Register a new User. Throw UserAlreadyExistsException if the user with specified
-     * email already exists.
-     */
     @Override
     public User registerUser(User user) throws UserAlreadyExistsException {
         if (userRepository.findById(user.getEmail()).isPresent()) {
@@ -44,10 +32,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    /*
-     * Update an existing User by it's email. Throw UserNotFoundException if the
-     * user with specified email does not exist.
-     */
     @Override
     public User updateProfile(User user) throws UserNotFoundException {
         if (userRepository.findById(user.getEmail()).isEmpty()) {
@@ -56,13 +40,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    /* Perform Login operation.
-     * Retrieve an existing user by it's email. Throw UserNotFoundException if the
-     * user with specified email does not exist.
-     * Throw InvalidCredentialsException if the password does not match with the password
-     * stored in DB.
-     * Caching implementation should be done.
-     */
+
     @Cacheable(value = "users-cache", key = "#user.email")
     @Override
     public User login(User user) throws UserNotFoundException, InvalidCredentialsException {
@@ -76,26 +54,19 @@ public class UserServiceImpl implements UserService {
         return retrievedUser;
     }
 
-    /* Validate a particular user to check whether he has role "Executive".
-     * Retrieve an existing user by his email and role.
-     */
+
     @Override
     public boolean validateUser(String email) {
         return ((userRepository.findByEmailAndRole(email, "Executive")) != null);
     }
 
-    /*
-     * Retrieve all existing users
-     */
+
     @Override
     public List<User> listAllUsers() {
         return userRepository.findAll();
     }
 
-    /*
-     * Retrieve an existing user by it's email. Throw UserNotFoundException if the
-     * user with specified email does not exist.
-     */
+
     @Override
     public User getUserByEmail(String email) throws UserNotFoundException {
         if (userRepository.findById(email).isEmpty()) {

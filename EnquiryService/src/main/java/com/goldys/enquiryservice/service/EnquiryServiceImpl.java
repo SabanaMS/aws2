@@ -12,19 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /*
- * This class is implementing the EnquiryService interface. This class has to be annotated with
- * @Service annotation.
- * @Service - is an annotation that annotates classes at the service layer, thus
- * clarifying it's role.
- *
- * */
+ * Boilerplate Code: Do Not Change
+ */
 @Service
 public class EnquiryServiceImpl implements EnquiryService {
 
-    /*
-     * Constructor Autowiring should be implemented for the EnquiryRepository
-     * and RabbitTemplate.
-     */
     private EnquiryRepository enquiryRepository;
 
     private RabbitTemplate rabbitTemplate;
@@ -35,11 +27,6 @@ public class EnquiryServiceImpl implements EnquiryService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    /*
-     * Add a new enquiry.
-     * @CacheEvict annotation is to be used to indicate the removal of all values,
-     * so that fresh values can be loaded into the cache again.
-     */
     @CacheEvict(value = "enquiry-cache", allEntries = true)
     @Override
     public Enquiry addNewEnquiry(Enquiry enquiry) {
@@ -50,23 +37,12 @@ public class EnquiryServiceImpl implements EnquiryService {
         return newEnquiry;
     }
 
-
-    /*
-     * Retrieve all existing enquiries.
-     * Caching should be implemented to reduce method calls.
-     */
     @Cacheable(value = "enquiry-cache")
     @Override
     public List<Enquiry> listAllEnquiries() {
         return enquiryRepository.findAll();
     }
 
-
-    /*
-     * Retrieve an existing enquiry by it's enquiryCode. Throw EnquiryNotFoundException if the
-     * enquiry with specified enquiryCode does not exist.
-     * Caching should be implemented to reduce method calls.
-     */
     @Cacheable(value = "enquiry-cache", key = "#p0")
     @Override
     public Enquiry getEnquiryByCode(String enquiryCode) throws EnquiryNotFoundException {

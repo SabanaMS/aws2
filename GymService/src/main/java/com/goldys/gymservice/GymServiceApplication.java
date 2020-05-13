@@ -7,12 +7,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /*
-Annotate this class with the following annotations:
-1. @SpringBootApplication
-2. @EnableEurekaClient - to mark this application as a client of a Eureka Service Registry
-3. @EnableCaching - to enable caching in the application
-4. @EnableFeignClient - to mark this application as a feign client
-*/
+ * Boilerplate Code: Do Not Change
+ */
 @SpringBootApplication
 @EnableCaching
 @EnableEurekaClient

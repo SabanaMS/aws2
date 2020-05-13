@@ -5,13 +5,11 @@ import com.goldys.enquiryservice.model.Enquiry;
 
 import java.util.List;
 
+/*
+ * Boilerplate Code: Do Not Change
+ */
 public interface EnquiryService {
 
-    /*
-     * You Should not modify this interface. You have to implement these methods in
-     * corresponding Impl classes
-     *
-     */
     Enquiry addNewEnquiry(Enquiry enquiry);
 
     List<Enquiry> listAllEnquiries();
