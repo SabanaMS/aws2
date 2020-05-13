@@ -8,18 +8,22 @@
 server:
   port: 8093
 spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://zipkin:9411/
   sleuth:
     sampler:
       probability: 100
   data:
     mongodb:
-      database: ticketdb
-      port: 27017
+      uri: ${MONGO_URI}
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eurekaservice:8761/eureka

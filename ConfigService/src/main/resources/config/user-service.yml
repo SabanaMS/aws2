@@ -9,15 +9,15 @@ server:
   port: 8090
 spring:
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://zipkin:9411/
   sleuth:
     sampler:
       probability: 100
   datasource:
-    url: jdbc:mysql://localhost:3306/userdb
+    url: ${MYSQL_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: password
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -30,5 +30,5 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eurekaservice:8761/eureka
 
