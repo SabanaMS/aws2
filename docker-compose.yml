@@ -102,6 +102,7 @@ services:
 
   ticketservice:
     build: ./TicketService
+    image: ticket-service:1.0-local
     ports:
       - 8093:8093
     restart: always
