@@ -14,13 +14,6 @@ export const environment = {
   USER_QUERY_API_URL:'http://apigateway:9000/enquiry-service/api/v1/enquiryservice/admin/',
   USER_TICKET_API: 'http://apigateway:9000/ticket-service/api/v1/ticketservice',
 
-  // direct access to service
-  // AUTH_API : 'http://localhost:8090/api/v1/userservice',
-  // AUTH_LOGIN_API : 'http://localhost:8090/api/v1/userservice/login',
-  // ADMIN_API_URL:'http://localhost:8091/api/v1/gymservice',
-  // USER_BOARD_API_URL:'http://localhost:8091/api/v1/gymservice',
-  // USER_QUERY_API_URL:'http://localhost:8092/api/v1/enquiryservice',
-  // USER_TICKET_API: 'http://localhost:8093/api/v1/ticketservice',
 };
 
 
