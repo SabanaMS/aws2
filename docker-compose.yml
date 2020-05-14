@@ -30,7 +30,7 @@ services:
     image: mysql:latest
     container_name: mysql_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "mysql", "--user=root","--password=password"]
       interval: 1m30s
       timeout: 10s
       retries: 3
@@ -44,7 +44,7 @@ services:
     image: mongo:latest
     container_name: mongo_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "mongo"]
       interval: 1m30s
       timeout: 10s
       retries: 3
