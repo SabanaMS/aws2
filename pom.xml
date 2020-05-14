@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.stackroute</groupId>
-    <artifactId>JR_FSE_Microservices_Spring_Boot_Case_1_Part_2_solution</artifactId>
+    <artifactId>JR_FSE_Deploying_Containerized_App_Solution_Part1_Solution</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>Boilerplate for GoldysGym Case Study</description>
