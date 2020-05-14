@@ -1,3 +1,22 @@
+#create the follwing services:
+# 1. rabbitmq
+# 2. zipkin
+# 3. mysql
+# 4. mongo
+# 5. configservice
+# 6. eurekaservice
+# 7. apigateway
+# 8. userservice
+# 9. gymservice
+# 10. enquiryservice
+# 11. ticketservice
+#
+#hint: use depends_on field to ensure proper sequence of container start-ups
+#Run `docker-compose up --build` to start all the containers
+#Check that all the service features are working as expected using health checks
+#Run `docker-compose down` to stop all the containers
+
+
 version: '3.5'
 
 services:
