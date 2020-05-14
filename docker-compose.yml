@@ -6,30 +6,61 @@ services:
     ports:
       - 15672:15672
     container_name: rabbitmq_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   zipkin:
     image: openzipkin/zipkin
     ports:
       - 9411:9411
     container_name: zipkin_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9411"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 
   mysql:
     image: mysql:latest
     container_name: mysql_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: userdb
 
+
   mongo:
     image: mongo:latest
     container_name: mongo_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   configservice:
     build: ./ConfigService
     image: config-service:1.0-local
     restart: always
     container_name: configservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - zipkin
 
@@ -40,6 +71,12 @@ services:
       - 8761:8761
     restart: always
     container_name: eurekaservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - zipkin
       - configservice
@@ -51,6 +88,12 @@ services:
       - 9000:9000
     restart: always
     container_name: apigateway_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - zipkin
       - configservice
@@ -63,6 +106,12 @@ services:
       - 8090:8090
     restart: always
     container_name: userservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - mysql
       - zipkin
@@ -77,6 +126,12 @@ services:
       - 8091:8091
     restart: always
     container_name: gymservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8091"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - mongo
       - zipkin
@@ -91,6 +146,12 @@ services:
       - 8092:8092
     restart: always
     container_name: enquiryservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8092"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - mongo
       - rabbitmq
@@ -107,6 +168,12 @@ services:
       - 8093:8093
     restart: always
     container_name: ticketservice_container
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8093"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - mongo
       - rabbitmq
