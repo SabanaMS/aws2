@@ -61,12 +61,12 @@ The application consists of the following microservices:
 - ApiGatewayService (works as the API Gateway using Netflix Zuul)
 - UserService (uses MySQL for data persistence)
 - GymService (uses MongoDB for data persistence)
-- EnquiryService (uses MongoDB for data persistence and RabbitMQ to generate message)
-- TicketService (uses MongoDB for data persistence and RabbitMQ to retrieve message)
+- EnquiryService (uses MongoDB for data persistence and RabbitMQ to produce message)
+- TicketService (uses MongoDB for data persistence and RabbitMQ to consume message)
 
 the steps are as follows:
 
-1. creating the Dockerfiles for each microservices
+1. creating the Dockerfile for each microservices
 2. Pushing the docker images to Docker Hub
 3. Creating a `docker-compose.yml` file
 4. Run the application using `docker-compose.yml`
