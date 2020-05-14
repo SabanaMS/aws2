@@ -8,7 +8,6 @@ services:
     container_name: rabbitmq_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://rabbitmq:15672/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -21,7 +20,6 @@ services:
     container_name: zipkin_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://zipkin:9411/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -33,7 +31,6 @@ services:
     container_name: mysql_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "mysql", "--user=root","--password=password"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -48,7 +45,6 @@ services:
     container_name: mongo_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "mongo"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -61,7 +57,6 @@ services:
     container_name: configservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://configservice:8888/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -78,7 +73,6 @@ services:
     container_name: eurekaservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://eurekaservice:8761/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -96,7 +90,6 @@ services:
     container_name: apigateway_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://apigateway:9000/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -115,7 +108,6 @@ services:
     container_name: userservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://userservice:8090/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -136,7 +128,6 @@ services:
     container_name: gymservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://gymservice:8091/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -157,7 +148,6 @@ services:
     container_name: enquiryservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://enquiryservice:8092/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -180,7 +170,6 @@ services:
     container_name: ticketservice_container
     healthcheck:
       test: "exit 0"
-      # test: ["CMD", "curl", "-f", "http://ticketservice:8093/"]
       interval: 1m30s
       timeout: 30s
       retries: 3
@@ -193,85 +182,3 @@ services:
       - eurekaservice
       - apigateway
 
-#  configservice:
-#    image: somsubhramkh/config-service:1.0-local
-#    restart: always
-#    container_name: configservice_container
-#    depends_on:
-#      - zipkin
-#
-#  eurekaservice:
-#    image: somsubhramkh/eureka-service:1.0-local
-#    ports:
-#      - 8761:8761
-#    restart: always
-#    container_name: eurekaservice_container
-#    depends_on:
-#      - zipkin
-#      - configservice
-#
-#  apigateway:
-#    image: somsubhramkh/api-gateway:1.0-local
-#    ports:
-#      - 9000:9000
-#    restart: always
-#    container_name: apigateway_container
-#    depends_on:
-#      - zipkin
-#      - configservice
-#      - eurekaservice
-#
-#  userservice:
-#    image: somsubhramkh/user-service:1.0-local
-#    ports:
-#      - 8090:8090
-#    restart: always
-#    container_name: userservice_container
-#    depends_on:
-#      - mysql
-#      - zipkin
-#      - configservice
-#      - eurekaservice
-#      - apigateway
-#
-#  gymservice:
-#    image: somsubhramkh/gym-service:1.0-local
-#    ports:
-#      - 8091:8091
-#    restart: always
-#    container_name: gymservice_container
-#    depends_on:
-#      - mongo
-#      - zipkin
-#      - configservice
-#      - eurekaservice
-#      - apigateway
-#
-#  enquiryservice:
-#    image: somsubhramkh/enquiry-service:1.0-local
-#    ports:
-#      - 8092:8092
-#    restart: always
-#    container_name: enquiryservice_container
-#    depends_on:
-#      - mongo
-#      - rabbitmq
-#      - zipkin
-#      - configservice
-#      - eurekaservice
-#      - apigateway
-#
-#
-#  ticketservice:
-#    image: somsubhramkh/ticket-service:1.0-local
-#    ports:
-#      - 8093:8093
-#    restart: always
-#    container_name: ticketservice_container
-#    depends_on:
-#      - mongo
-#      - rabbitmq
-#      - zipkin
-#      - configservice
-#      - eurekaservice
-#      - apigateway
