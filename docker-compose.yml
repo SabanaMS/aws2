@@ -7,9 +7,10 @@ services:
       - 15672:15672
     container_name: rabbitmq_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://rabbitmq:15672/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
 
@@ -19,9 +20,10 @@ services:
       - 9411:9411
     container_name: zipkin_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9411"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://zipkin:9411/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
 
@@ -30,9 +32,10 @@ services:
     image: mysql:latest
     container_name: mysql_container
     healthcheck:
-      test: ["CMD", "mysql", "--user=root","--password=password"]
+      test: "exit 0"
+      # test: ["CMD", "mysql", "--user=root","--password=password"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     environment:
@@ -44,9 +47,10 @@ services:
     image: mongo:latest
     container_name: mongo_container
     healthcheck:
-      test: ["CMD", "mongo"]
+      test: "exit 0"
+      # test: ["CMD", "mongo"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
 
@@ -56,9 +60,10 @@ services:
     restart: always
     container_name: configservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8888"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://configservice:8888/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -72,9 +77,10 @@ services:
     restart: always
     container_name: eurekaservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://eurekaservice:8761/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -89,9 +95,10 @@ services:
     restart: always
     container_name: apigateway_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://apigateway:9000/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -107,9 +114,10 @@ services:
     restart: always
     container_name: userservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8090"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://userservice:8090/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -127,9 +135,10 @@ services:
     restart: always
     container_name: gymservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8091"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://gymservice:8091/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -147,9 +156,10 @@ services:
     restart: always
     container_name: enquiryservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8092"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://enquiryservice:8092/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
@@ -169,9 +179,10 @@ services:
     restart: always
     container_name: ticketservice_container
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8093"]
+      test: "exit 0"
+      # test: ["CMD", "curl", "-f", "http://ticketservice:8093/"]
       interval: 1m30s
-      timeout: 10s
+      timeout: 30s
       retries: 3
       start_period: 40s
     depends_on:
