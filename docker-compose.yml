@@ -10,6 +10,7 @@
 # 9. gymservice
 # 10. enquiryservice
 # 11. ticketservice
+# 12. frontend
 #
 #hint: use depends_on field to ensure proper sequence of container start-ups
 #Run `docker-compose up --build` to start all the containers
@@ -187,6 +188,26 @@ services:
       - 8093:8093
     restart: always
     container_name: ticketservice_container
+    healthcheck:
+      test: "exit 0"
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - mongo
+      - rabbitmq
+      - zipkin
+      - configservice
+      - eurekaservice
+      - apigateway
+
+  ui:
+    image: somsubhramkh/goldysgym-ui:1.0-local
+    ports:
+      - 4200:4200
+    restart: always
+    container_name: ui_container
     healthcheck:
       test: "exit 0"
       interval: 1m30s
