@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.stackroute</groupId>
-        <artifactId>JR_FSE_Deploying_Containerized_App_Part1_Solution</artifactId>
+        <artifactId>JR_FSE_Deploying_Containerized_App_Part1_Boilerplate</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
