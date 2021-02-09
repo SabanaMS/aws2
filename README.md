@@ -1,4 +1,5 @@
-# Goldy's Gym - Deploying Microservice Based Application using Docker Containers
+# Goldy's Gym - Deploying Microservice Based Application in an EKS cluster on AWS
+
 
 # See PROBLEM.md for requirements.
 
