@@ -1,4 +1,4 @@
-# Goldy's Gym - Deploying Microservice Based Application using Docker Containers
+# Goldy's Gym - Deploying Microservice Based Application in an EKS cluster on AWS
 
 ## Problem Statement
 
@@ -50,7 +50,7 @@ However, this strategy does not give the managers at the call centres an overall
 
 ## Proposed Solution
 In this phase, Goldy's Gym needs to deploy the application on a remote VM using containerization, in order to
-eliminate the hassles that comes with deploying the application in multiple environments.
+eliminate the hassles that comes with deploying the application in multiple environments. Once it is successful, then the application needs to be deployed in an EKS cluster on AWS.
 
 ## High Level Requirements
 
@@ -58,6 +58,16 @@ eliminate the hassles that comes with deploying the application in multiple envi
 2. Pushing the docker images to Docker Hub
 3. Creating a `docker-compose.yml` file
 4. Run the application using `docker-compose.yml`
+5. Creating deployment descriptors based on yaml for each microservices
+6. Creating service descriptors based on yaml for each microservices
+7. Create deployments for each microservices based on the yaml files
+8. Create a service for each microservices based on the yaml files
+9. Expose the Angular UI and the API gateway through ingress using nginx ingress controller
+10. Create an AWS EKS Cluster with Linux-only workloads using eksctl
+11. create the deployments in the cluster created in the previous steps
+12. Verify the deployment
+
+
 
 
 ### There would be three roles in this application. They would be allowed to perform activities based on their role: 
@@ -101,7 +111,8 @@ eliminate the hassles that comes with deploying the application in multiple envi
 
 ## Important Information
 
-To avoid local installation, we will use dockerized versions of Zipkin and RabbitMQ. Please use the following commands to start the containers:
+- Based on requirement, `ConfigService` and `EurekaService` might be skipped in Kubernetes based deployment where the need for `ConfigService` can be replaced using ConfigMap and Secrets.
+- To avoid local installation, we will use dockerized versions of Zipkin and RabbitMQ. Please use the following commands to start the containers:
 
 ### RabbitMQ
 

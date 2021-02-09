@@ -14,6 +14,9 @@ The Objective of this assignment are the following:
  - Working with docker containers
  - Container Communication
  - Deploying Multi-Container Application using Docker Compose
+ - Creating the Kubernetes yaml config files
+ - Creation of a new EKS cluster in AWS
+ - Deploy the application in EKS
 
 #### To use this as a boilerplate for your new project, you can follow these steps
 
