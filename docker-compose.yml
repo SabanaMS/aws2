@@ -17,4 +17,189 @@
 #Check that all the service features are working as expected using health checks
 #Run `docker-compose down` to stop all the containers
 
+version: "3.7"
 
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+    container_name: rabbitmq_container
+    health_check:
+      test:"exit 0"
+      interval:1m30s
+      time_out:30s
+      retries:3
+      start_period:40s
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    container_name: zipkin_container
+    health_check:
+      test:"exit 0"
+      interval:1m30s
+      time_out:30s
+      retries:3
+      start_period:40s
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userdb
+  mongo:
+    image: mongo:latest
+    container_name: mongo_container
+    health_check:
+      test: "exit 0"
+      interval: 1 m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+  configservice:
+    build: ./ConfigService
+    image: config-service:1.0-local
+    restart: always
+    container_name: configservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      zipkin
+  eurekaservice:
+    build: ./EurekaService
+    image: eureka-service:1.0-local
+    restart: always
+    ports: 
+      - 8761:8761
+    container_name: eurekaservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+  apigateway:
+    build: ./ApiGatewayService
+    image: apigateway-service:1.0-local
+    restart: always
+    ports: 
+      - 9000:9000
+    container_name: apigateway_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      zipkin
+      configservice
+      eurekaservice
+  userservice:
+    build: ./UserService
+    image: user-service:1.0-local
+    restart: always
+    ports:
+      - 8090:8090
+    container_name: userservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      mysql
+      zipkin
+      configservice
+      eurekaservice
+      apigateway
+  gymservice:
+    build: ./GymService
+    image: gym-service:1.0-local
+    restart: always
+    ports:
+      - 8091:8091
+    container_name: gymservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      mongo
+      zipkin
+      configservice
+      eurekaservice
+      apigateway
+  enquiryservice:
+    build: ./EnquiryService
+    image: enquiry-service:1.0-local
+    restart: always
+    ports:
+      - 8092:8092
+    container_name: enquiryservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      rabbitmq
+      mongo
+      zipkin
+      configservice
+      eurekaservice
+      apigateway
+  ticketservice:
+    build: ./TicketService
+    image: ticket-service:1.0-local
+    restart: always
+    ports:
+      - 8093:8093
+    container_name: ticketservice_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      rabbitmq
+      mongo
+      zipkin
+      configservice
+      eurekaservice
+      apigateway
+  frontend:
+    image: goldys-gym:1.0-local
+    restart: always
+    ports:
+      - 4200:4200
+    container_name: frontend_container
+    health_check:
+      test: "exit 0"
+      interval: 1m30s
+      time_out: 30s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      rabbitmq
+      mongo
+      zipkin
+      configservice
+      eurekaservice
+      apigateway
