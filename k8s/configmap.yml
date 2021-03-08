@@ -1,0 +1,12 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:  
+  name: gym-config
+data:
+  rabbitmqhost: rabbitmq
+  rabbitmqport: 5672
+  rabbitmquser: guest
+  mongourl: mongodb://mongo:27017/goldysgym
+  mysqluser: root
+  mysqlurl: jdbc:mysql://mysql:3306/userdb
